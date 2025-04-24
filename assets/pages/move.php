@@ -15,405 +15,690 @@
     <div class="products">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="filters">
-              <ul>
-                  <li class="active wow fadeInRight" data-wow-delay="1s" data-wow-duration="1s" data-filter="*">TOUS</li>
-                  <li class="wow fadeInRight" data-wow-delay="0.8s" data-wow-duration="1s" data-filter=".des">EQUIPES SACERDOTALES</li>
-                  <li class="wow fadeInRight" data-wow-delay="0.6s" data-wow-duration="1s" data-filter=".dev">EQUIPES ADMINISTRATIVES</li>
-                  <li class="wow fadeInRight" data-wow-delay="0.4s" data-wow-duration="1s" data-filter=".gra">RESPONSABLE DES LAïCS</li>
-                  <li class="wow fadeInRight" data-wow-delay="0.4s" data-wow-duration="1s" data-filter=".tro">EQUIPES DE SOUS-COORDINATIONS</li>
-              </ul>
-            </div>
-          </div>
           <style>
-            .section-heading{
-              font-size: 25px;
-              text-align:center;
-            }
-          </style>
-          <!-- EQUIPES SACERDOTALES-->
-          <div class="col-md-12">
-            <div class="filters-content">
-                <h2 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">EQUIPES SACERDOTALES</h2>
-                <div class="row grid">
-                    <div class="col-lg-4 col-md-4 all des ">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/cure.jpg" alt=""></a>
-                        <div class="down-content">
-                          <a href="#"><h4>R. P. François BUHANDO, S.J.</h4></a>
-                          <h5>Père Curé-Aumônier</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all des">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/JP.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>R. P. JEAN-PAUL KAMBA, S.J.</h4>
-                          <h5>Père Vicaire Paroissial</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all des">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/vicdo.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>R.P. Ernest KOMBO, S.J.</h4>
-                          <h5>Vicaire Dominical </h5>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
 
-          <!-- EQUIPES ADMINISTRATIVES-->
-          <div class="col-md-12">
-            <div class="filters-content">
-                <h2 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">EQUIPES ADMINISTRATIVES</h2>
-                <div class="row grid">
-                    <div class="col-lg-4 col-md-4 all dev ">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/sec.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Christian BEYA</h4>
-                          <h5>Secrétaire Paroissial</h5>
-                          <a href="tel:0990466905">+243 99 046 6905</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/adolphe.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Adolphe KABWEMDE</h4>
-                          <h5>Intendant stagiaire</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/int.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h5>Sacristain</h5>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
+        caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-          <!-- RESPONSABLE DES LAïCS-->
-          <div class="col-md-12">
-            <div class="filters-content">
-                <h2 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">RESPONSABLE DES LAïCS</h2>
-                <div class="row grid">
-                    <div class="col-lg-4 col-md-4 all gra ">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Papa Emile LOTOMONI</h4>
-                          <h5>Msaidizi</h5>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-          </div>
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
 
-          <!-- SOUS-COORDINATION-->
-          <div class="col-md-12">
-            <div class="filters-content">
-              <h2 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">RESPONSABLE DE LA SOUS-COORDINATION</h2>
-              <div class="row grid">
-                <div class="col-lg-4 col-md-4 all gra ">
-                  <div class="product-item">
-                    <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .down-content {
+            text-align: center;
+        }
+
+        .down-content h4 {
+            margin: 5px 0;
+        }
+
+        .down-content h5 {
+            margin: 5px 0;
+            font-weight: normal;
+        }
+
+        img {
+            width: 200px; /* Ajuste l'image à la largeur de la cellule */
+            height: 250px; /* Maintient le ratio de l'image */
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <caption>EQUIPE SACERDOTALE</caption>
+        <thead>
+            <tr>
+                <th>Père Cure</th>
+                <th>Père Vicaire</th>
+                <th>Père Vicaire Dominical</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/cure.jpg" alt="R. P. François BUHANDO, S.J."></a>
                     <div class="down-content">
-                      <h4>Professeur Jean-Marie BASHIZI</h4>
-                      <h5>Mujumbe</h5>
+                        <a href="#"><h4>R. P. François BUHANDO, S.J.</h4></a>
+                        <h5>Père Curé-Aumônier S,j</h5>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SOUS-COORDINATION DES GROUPES ET MOUVEMENTS-->
-          <div class="col-md-12">
-            <div class="filters-content">
-              <h2 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">RESPONSABLE DE LA SOUS-COORDINATION DES GROUPES ET MOUVEMENTS</h2>
-              <div class="row grid">
-                <div class="col-lg-4 col-md-4 all gra ">
-                  <div class="product-item">
-                    <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
+                </td>
+                <td>
+                    <a href="#"><img src="assets/images/services/JP.jpg" alt="Père Vicaire"></a>
                     <div class="down-content">
-                      <h4>Papa Emile LOTOMONI</h4>
-                      <h5>Msaidizi</h5>
+                        <a href="#"><h4>Père Vicaire</h4></a>
+                        <h5>R.P. Vicaire S,j</h5>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="filters-content">
-                <div class="row grid">
-                    <div class="col-lg-4 col-md-4 all dev ">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Christian BEYA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>KIRO</h5>
-                          
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Adolphe KABWEMDE</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>SCOUT</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>KA</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>BILENGE</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>ARMEE BLEUE</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>RCC</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>GARDE D'HONNEUR</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>SACRE-COEUR</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>SAINTE RITA</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>MISERICORDE DIVINE</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>FAMILLE CHRETIENNE</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>FRATERNITE DES FOYERS CHRETIENS</h5>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-
-          <!-- SOUS-COORDINATION DES COMMISSIONS-->
-          <div class="col-md-12">
-            <div class="filters-content">
-              <h2 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">RESPONSABLE DES COMMISSIONS</h2>
-              <div class="row grid">
-                <div class="col-lg-4 col-md-4 all gra ">
-                  <div class="product-item">
-                    <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
+                </td>
+                <td>
+                    <a href="#"><img src="assets/images/services/vicdo.jpg" alt="Père Vicaire Dominical"></a>
                     <div class="down-content">
-                      <h4>Papa Emile LOTOMONI</h4>
-                      <h5>Msaidizi</h5>
+                        <a href="#"><h4>Père Vicaire Dominical</h4></a>
+                        <h5>R.P. Père Vicaire Dominical S,j</h5>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-          <div class="col-md-12">
-            <div class="filters-content">
-                <div class="row grid">
-                    <div class="col-lg-4 col-md-4 all dev ">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Christian BEYA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION LITURGIQUE</h5>
-                          
-                        </div>
-                      </div>
+    <table>
+        <caption>EQUIPE ADMINISTRATIVE</caption>
+        <thead>
+            <tr>
+                <th>Secrétaire Paroissial</th>
+                <th>Intendant Stagiaire</th>
+                <th>Sacristain</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/sec.jpg" alt="Secrétaire Paroissial"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Christian BEYA</h4></a>
+                        <h5>Secrétaire Paroissial</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Adolphe KABWEMDE</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION INTELECTUELLE</h5>
-                        </div>
-                      </div>
+                </td>
+                <td>
+                    <a href="#"><img src="assets/images/services/adolphe.jpg" alt="Intendant Stagiaire"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Adolphe KABWENDE</h4></a>
+                        <h5>Intendant Stagiaire</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION JUSTICE ET PAIX</h5>
-                        </div>
-                      </div>
+                </td>
+                <td>
+                    <a href="#"><img src="assets/images/services/int.jpg" alt="Sacristain"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Fabien GIZENGA</h4></a>
+                        <h5>Sacristain</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION MARIAGE ET FAMILLE</h5>
-                        </div>
-                      </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>RESPONSABLES DES LAICS</caption>
+        <thead>
+            <tr>
+                <th>Msaidizi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Responsable des Laics"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Papa Emile LOTOMONI</h4></a>
+                        <h5>Description du Responsable des Laics</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION FINANCE</h5>
-                        </div>
-                      </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>RESPONSABLE DE LA SOUS-COORDINATION DES GROUP. ET MOUV.</caption>
+        <thead>
+            <tr>
+                <th>Mujumbe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Responsable des Laics"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Professeur Jean-Marie BASHIZI</h4></a>
+                        <h5>RESPONSABLE DE LA SOUS-COORDINATION DES GROUP. ET MOUV.</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION DEVELOPPEMENT</h5>
-                        </div>
-                      </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Responsable Kiro</th>
+                <th>Responsable Scout</th>
+                <th>Responsable KA</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Secrétaire Paroissial"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Name</h4></a>
+                        <h5>Responsable Kiro</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Jean-Paul MUKAD</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION MASSE ET MEDIA</h5>
-                        </div>
-                      </div>
+                </td>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Intendant Stagiaire"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Name</h4></a>
+                        <h5>Responsable Scout</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
-                        <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION FORMATION</h5>
-                        </div>
-                      </div>
+                </td>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Name</h4></a>
+                        <h5>Responsable KA</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+            <th>Responsable BILENGE YA MUINDA</th>
+            <th>Responsable R.C.C</th>
+            <th>Responsable GARDE D’HONNEUR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
                         <div class="down-content">
-                          <h4>Fr Fabien GIZENGA</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION HYGIENE ET SANTE</h5>
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable BILENGE YA MUINDA</h5>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 all dev">
-                      <div class="product-item">
-                        <a href="#"><img src="assets/images/services/.jpg" alt=""></a>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
                         <div class="down-content">
-                          <h4>Fr Guelord MALALE</h4>
-                          <h4>RESPONSABLE</h4>
-                          <h5>COMMISSION DE LA PASTORALE DES JEUNES</h5>
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable R.C.C</h5>
                         </div>
-                      </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable GARDE D’HONNEUR</h5>
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+            <th>Responsable SACRE COEUR</th>
+            <th>Responsable SAINTE RITA</th>
+            <th>Responsable MISERICORDE DIVINE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable SACRE COEUR</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable SAINTE RITA</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable MISERICORDE DIVINE</h5>
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Responsable FAMILLE CHRETIENNE</th>
+                <th>Responsable FRATERNITE DES FOYERS CHRETIENS</th>
+                <th>Responsable JAAMA TAKATIFU</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable FAMILLE CHRETIENNE</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable FRATERNITE DES FOYERS CHRETIENS</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable JAAMA TAKATIFU</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>RESPONSABLE DE LA SOUS-COORDINATION PAROISSIALE DES COMMISSIONS</caption>
+        <thead>
+            <tr>
+                <th>Responsable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Responsable des Laics"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>André MEZA</h4></a>
+                        <h5>Responsable</h5>
                     </div>
-                    
-                </div>
-            </div>
-          </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>COMMISSION LITURGIQUE</th>
+                <th>COMMISSION INTELLECTUELLE</th>
+                <th>COMMISSION JUSTICE ET PAIX</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>COMMISSION MARIAGE ET FAMILLE</th>
+                <th>COMMISSION FINANCE</th>
+                <th>COMMISSION DEVELOPPEMENT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>COMMISSION MASS-MEDIA</th>
+                <th>COMMISSION FORMATION</th>
+                <th>COMMISSION HYGIENE ET SANTE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>COMMISSION PASTORALE DES JEUNES</th>
+                <th>COMMISSION CATHECHESE</th>>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>RESPONSABLE DE LA LITURGIE</caption>
+        <thead>
+            <tr>
+                <th>Responsable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Responsable des Laics"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Freddy KABAMBA</h4></a>
+                        <h5>Responsable en charge de la Liturgie</h5>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>  
+                <th>PROTOCOLE</th>
+                <th>LECTORAT</th>
+                <th>ACOLYTAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Luc TSHUKA</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>  
+                <th>DECORATION</th>
+                <th>DANCEUSE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Luc TSHUKA</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>RESPONSABLE DE LA SOUS-COORDINATION DES CEV</caption>
+        <thead>
+            <tr>
+                <th>Responsable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#"><img src="assets/images/services/icone.png" alt="Responsable des Laics"></a>
+                    <div class="down-content">
+                        <a href="#"><h4>Name</h4></a>
+                        <h5>Responsable</h5>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>  
+                <th>CEV ANUARITE</th>
+                <th>CEV BAKANJA</th>
+                <th>CEV BAKHITA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Luc TSHUKA</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>  
+                <th>CEV BETHANIE</th>
+                <th>CEV CŒUR IMMACULE DE MARIE</th>
+                <th>CEV SAINT CHARLES LWANGA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Luc TSHUKA</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>  
+                <th>CEV SAINT IGNACE</th>
+                <th>CEV SAINT KIZITO</th>
+                <th>CEV SAINT VINCENT DE PAUL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Luc TSHUKA</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                </td>
+       
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>  
+                <th>CEV SAINTE THERESE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>
+                        <a href="#"><img src="assets/images/services/icone.png" alt="Sacristain"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>Name</h4></a>
+                            <h5>Responsable</h5>
+                        </div>
+                    </td>
+       
+            </tr>
+        </tbody>
+    </table>
 
         </div>
       </div>
@@ -421,6 +706,3 @@
     </div>
     </div>
   </div>
-	<!-- Produits presents End -->
-
-   <!-- Fin de cette section -->
