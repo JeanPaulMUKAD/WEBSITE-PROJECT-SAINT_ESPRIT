@@ -24,6 +24,95 @@
       </div>
     </div>
 
+    <!--RENCONTRE -->
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+          <div class="col-md-6">
+            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+              <img src="assets/images/services/r1.jpg">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+              <h4>RENCONTRE DU R.P VICAIRE AVEC LA PDJ, LE MIEC ET LA COORDINATION DES ETUDIANTS</h4>
+              <p>Une rencontre ce mercredi 30 avril 2025 entre la pastorale des jeunes, le Mouvement International des Étudiants Catholiques(MIEC) 
+                et la Coordination des Étudiants autour du Révérend Père Jean-Paul KAMBA, aumônier des jeunes.
+                Dans le souci de bien guider la jeunesse de l’église, une telle rencontre a été jugée plusque nécessaire.
+                Ladite rencontre a gravité autour des quelques points importants: la collaboration directe entre les trois structures dans 
+                l’organisation de leurs activités, le soutien mutuel, l’organisation éventuelle des activités communes, 
+                réflexion sur la gestion commune des espaces de la paroisse pouvant être rentables pour le bon fonctionnement desdites structures etc.
+                Les échanges se sont avérés très indispensables dans leur profondeur car, tendant à promouvoir la jeunesse de l’église.
+
+              </p> 
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
+              <h2>PHOTOS</h2>
+            </div>
+          </div>
+    <!-- Respace surface -->
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <div class="thumb-container">
+          <img src="assets/images/services/r2.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <div class="thumb-container">
+          <img src="assets/images/services/r3.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin de Respace mouve -->
+
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <div class="thumb-container">
+          <img src="assets/images/services/r4.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--DIMANCHE DE PAQUES-->
     <div class="best-features about-features">
       <div class="container">
