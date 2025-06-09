@@ -24,6 +24,211 @@
       </div>
     </div>
 
+     <!--NEUVAINE -->
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+          <div class="col-md-6">
+            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+              <img src="assets/images/services/Neuvaine.jpg">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+              <h4>HOMÉLIES DE LA NEUVAINE DE LA PENTECÔTE</h4>
+              <p>Retrouvez toutes les homélies jour après jour de la neuvaine de la Pentecôte.
+              </p> 
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
+              <h2>PHOTOS</h2>
+            </div>
+          </div>
+    <!-- Respace surface -->
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du premier jour</h1> <br>
+        <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR1.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+         <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du deuxième jour</h1> <br>
+        <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR2.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin de Respace mouve -->
+
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+         <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du troisième jour jour</h1> <br>
+        <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR3.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du quatrième jour</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR4.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du cinquième jour</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR5.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du sixième jour</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR 6.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du septième jour</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR 7.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du hutième jour</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR 8.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du neuvième jour</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/PREDICATION JOUR 9.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Debut de Respace mouve -->
+    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+      <div class="team-member">
+        <h1 class=" md:text-4xl lg:text-xl font-bold">Homélie de la messe</h1> <br>   <div class="thumb-container">
+          <img src="assets/images/services/HOMELIE DE LA MESSE DE LA PENTECOTE.jpg" alt="">
+
+          <div class="hover-effect">
+            <div class="hover-content">
+              <ul class="social-icons">
+      <!-- vide pour l'instant -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!--RENCONTRE -->
     <div class="best-features about-features">
       <div class="container">

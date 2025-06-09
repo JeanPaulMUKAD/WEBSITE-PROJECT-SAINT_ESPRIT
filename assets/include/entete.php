@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/c31ccd0efd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <meta name="description" content="Eglise famille de Dieu">
 
     <title>PAROISSE SAINT-ESPRIT/UNILU </title>
