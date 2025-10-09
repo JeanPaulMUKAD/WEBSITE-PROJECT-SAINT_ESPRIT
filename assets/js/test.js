@@ -52,7 +52,7 @@
     document.body.appendChild(masque);
 
     // Création du logo
-    logo.setAttribute('src', 'assets/images/logo/i.png');
+    logo.setAttribute('src', 'assets/images/logo/Logo1.jpg');
     logo.style.width = '10vh';
     logo.style.height = '10vh';
     logo.style.position = 'relative';

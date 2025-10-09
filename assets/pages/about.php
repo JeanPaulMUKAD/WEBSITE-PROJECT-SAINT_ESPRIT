@@ -366,14 +366,14 @@
           <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
             <div class="team-member">
               <div class="thumb-container">
-                <img src="assets/images/services/JP.jpg" alt="">
+                <img src="assets/images/services/JP.jpEg" alt="">
                 <div class="hover-effect">
                   <div class="hover-content">
                   </div>
                 </div>
               </div>
               <div class="down-content">
-                <h4>R. P. JEAN-PAUL KAMBA, S.J.</h4>
+                <h4>R. P. Martin BAHATI, S.J.</h4>
                 <span>Père Vicaire Paroissial</span>
               </div>
             </div>
