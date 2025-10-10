@@ -112,7 +112,7 @@ a.filled-button:hover {
 }
 
 .contact-heading {
-	background-image: url(../images/services/Jp3.jpg);
+	background-image: url(../images/services/p3.jpg);
 }
 
 .page-heading {
@@ -348,7 +348,7 @@ header .navbar {
 
 .banner-item-03 {
 	padding: 300px 0px;
-	background-image: url(../images/header/slide_04.jpg);
+	background-image: url(../images/header/an.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -546,13 +546,49 @@ header .navbar {
 	font-size: 20px;
 }
 
-.best-featuress{
-	background: #1a2036;
-	padding: 10px 20px;
-	color: #fff;
-	max-width: 1000px;
-	margin-left: 7.7%;
+/* Styles pour les avatars des responsables */
+.card-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    
+    /* Centrage horizontal : */
+    display: block; /* Essentiel pour que les marges automatiques fonctionnent */
+    margin: 0 auto 15px auto; /* Centre l'image et ajoute 15px de marge en bas */
+    
+    /* Affichage de l'image : */
+    object-fit: cover; /* S'assure que l'image remplit le cercle sans être étirée */
+    
+    /* Style visuel */
+    border: 3px solid white;
 }
+.row .section-heading{
+	font-size: 20px;
+}
+
+/* Le reste de votre CSS existant (sans changement) */
+.feature-card {
+    background-color: #242a42;
+    color: #fff;
+	text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* ASSUREZ-VOUS QUE LE PARENT A BIEN text-align: center; DANS SON STYLE OU VIA UNE CLASSE (comme text-center dans l'HTML) */
+}
+
+.card-title {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.feature-card .card-subtitle{
+	text-align: center;
+	color: red;
+}
+.note{
+	color: white;
+}
+/* ... (Le reste de vos styles) ... */
 
 
 .best-features ul.featured-list li {
@@ -1002,94 +1038,114 @@ footer .inner-content p a {
 	color: #fff;
 }
 
+/* ========================================================================= */
+/* BLOC FORMULAIRE (Register & Login) : STYLE PAYSAGE AGRANDI               */
+/* ========================================================================= */
+
 .register form,
 .login form {
-  max-width: 25rem;
-  border-radius: .5rem;
-  padding: 2rem;
-  background: #fff;
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  border: 0.2rem solid #333;
-  margin: 1rem auto;
+    max-width: 45rem; /* AUGMENTÉ SIGNIFICATIVEMENT : Très large (45rem) */
+    /* La hauteur est naturellement définie par le contenu, mais nous optimisons l'espace */
+    
+    border-radius: 1.5rem; 
+    padding: 3rem 4rem; /* Rembourrage horizontal augmenté pour accentuer la largeur */
+    background: #f8f9fa;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border: none;
+    
+    /* Légèrement moins de marge verticale pour l'effet paysage */
+    margin: 1.5rem auto; 
 }
 
+/* Titre du formulaire */
 .register form h3,
 .login form h3 {
-  font-size: 2rem;
-  padding-bottom: 1rem;
-  color: #333;
-  text-transform: uppercase;
-  text-align: center;
+    font-size: 2.5rem;
+    padding-bottom: 1.5rem;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
 }
 
+/* Champs de saisie (Inputs) */
 .register form .box,
 .login form .box {
-  width: 100%;
-  padding: 1.2rem 1.4rem;
-  border-radius: .5rem;
-  border: 0.2rem solid #333;
-  font-size: 1rem;
-  color: #666;
-  text-transform: none;
-  margin: .7rem 0;
+    width: 100%;
+    padding: 1.2rem 1.6rem; 
+    border-radius: 0.75rem;
+    border: 1px solid #ced4da; 
+    
+    font-size: 1.1rem;
+    color: #495057; 
+    text-transform: none;
+    margin: 1rem 0;
+    
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.register form .box:focus,
+.login form .box:focus {
+    border-color: red; 
+    outline: none;
+}
+
+/* Section "Se souvenir de moi" (Checkbox) */
 .register form .remember,
 .login form .remember {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: .5rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 .register form .remember label,
 .login form .remember label {
-  font-size: 1rem;
-  color: #666;
-  cursor: pointer;
+    font-size: 1.1rem;
+    color: #666;
+    cursor: pointer;
 }
 
+/* Boutons */
 .register form .btn,
 .login form .btn {
-  width: 100%;
-  text-align: center;
-}
-
-.register form .btn.link,
-.login form .btn.link {
-  background: #000;
-  color: #fff;
-}
-
-.register form .btn.link:hover,
-.login form .btn.link:hover {
-  background: #0984e3;
-}
-
-.register form  .btn,
-.login form .btn {
-  background: #1a6692 !important;
-  color: #fff;
+    width: 100%;
+    text-align: center;
+    background: rgb(107, 3, 3) !important;
+    color: #fff;
+    padding: 1.2rem 1.6rem; 
+    font-weight: bold;
+    font-size: 1.1rem; 
+    border: none;
+    border-radius: 0.75rem;
+    transition: background 0.3s ease;
 }
 
 .register form .btn:hover,
 .login form .btn:hover {
-  background: #000;
+    background: red !important;
 }
 
+/* Bouton secondaire (Lien) */
+.register form .btn.link,
+.login form .btn.link {
+    background: #6c757d !important;
+    color: #fff;
+}
+
+.register form .btn.link:hover,
+.login form .btn.link:hover {
+    background: #5a6268 !important;
+}
+
+/* Texte sous le formulaire (Lien vers l'autre page) */
 .register form p,
 .login form p {
-  padding-top: 2rem;
-  font-size: 1rem;
-  color: #666;
-  text-align: center;
-  padding-bottom: 1rem;
+    padding-top: 2.5rem; 
+    font-size: 1.1rem; 
+    color: #666;
+    text-align: center;
+    padding-bottom: 1rem;
 }
 .authent p{
 	text-align: center;

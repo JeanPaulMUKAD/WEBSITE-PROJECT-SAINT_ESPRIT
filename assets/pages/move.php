@@ -78,7 +78,7 @@
                     </div>
                 </td>
                 <td>
-                    <a href="#"><img src="assets/images/services/JP.jpg" alt="Père Vicaire"></a>
+                    <a href="#"><img src="assets/images/services/JP.jpeg" alt="Père Vicaire"></a>
                     <div class="down-content">
                         <a href="#"><h4>Père Vicaire</h4></a>
                         <h5>R.P. Vicaire S,j</h5>

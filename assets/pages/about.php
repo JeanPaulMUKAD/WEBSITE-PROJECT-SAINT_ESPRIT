@@ -278,64 +278,7 @@
 
   <div class="team-members">
 
-      <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h2>Bâtiment en construction</h2>
-            </div>
-          </div>
-		  <!-- Respace surface -->
-      <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="assets/images/services/eco1.jpg" alt="" >
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <!-- vide pour l'instant -->
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-			<!-- Fin de respace surface -->
-			<!-- Debut de Respace mouve -->
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="assets/images/services/eco2.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-						<!-- vide pour l'instant -->
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fin de Respace mouve -->
-		  <!-- Debut Respace shop -->
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-            <div class="team-member">
-              <div class="thumb-container">
-                <img src="assets/images/services/eco3.jpg" alt="">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <ul class="social-icons">
-                      <!-- vide pour l'instant -->
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+     
     
 
 
@@ -366,7 +309,7 @@
           <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
             <div class="team-member">
               <div class="thumb-container">
-                <img src="assets/images/services/JP.jpEg" alt="">
+                <img src="assets/images/services/JP.jpeg" alt="">
                 <div class="hover-effect">
                   <div class="hover-content">
                   </div>

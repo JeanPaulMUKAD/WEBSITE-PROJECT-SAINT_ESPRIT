@@ -19,15 +19,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <meta name="description" content="Eglise famille de Dieu">
+    
+    <meta name="description" content="Bienvenue sur la page officielle de la Paroisse Saint-Esprit: Eglise famille de Dieu">
 
-    <title>PAROISSE SAINT-ESPRIT/UNILU </title>
+
+
+    <title>PAROISSE-AUMONERIE UNIVERSITAIRE CATHOLIQUE SAINT-ESPRIT</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	  <!-- Animation js -->
 	  <link rel="stylesheet" href="assets/css/animate.css"/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/Logo1.jpg" type="image/x-icon">
+
 <!--
 RESPACE HOLDING
 https://respace-holding.com/

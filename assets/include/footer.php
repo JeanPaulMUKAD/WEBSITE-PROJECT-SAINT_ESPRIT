@@ -5,7 +5,7 @@
             <div class="inner-content">
               <p class="wow tada infinite" data-wow-delay="0.3s" data-wow-duration="5s">Copyright &copy; 2025. All rights reserved | by 
 				      <a  rel="nofollow noopener" href="#">PAROISSE SAINT-ESPRIT </a></p><br>
-              <img class="wow fadeInUp" data-wow-delay="1s" data-wow-duration="1.2s" src="assets/images/logo/Logo1.jpg" alt="" width="80px" height="80px">
+          
             </div>
           </div>
         </div>
