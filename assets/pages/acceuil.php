@@ -168,7 +168,7 @@
             <div class="feature-card p-4 h-100 text-center"> <img
                 src="assets/images/services/JP.jpeg" alt="Photo du Père Jean-Paul Kamba"
                 class="card-avatar mb-3">
-              <h4 class="card-title">2. R. P. Jean-Paul KAMBA, SJ.</h4>
+              <h4 class="card-title">2. R. P. Martin BAHATI, SJ.</h4>
               <p class="card-subtitle">Vicaire Paroissial</p>
               <hr>
               <ul class="list-unstyled text-left">

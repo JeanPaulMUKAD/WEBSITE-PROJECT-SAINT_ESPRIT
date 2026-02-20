@@ -4,18 +4,19 @@ if(!isset($_SESSION['admin_id'])) {
     exit();
 }
 ?>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="dashboard.php">
-        <i class="fas fa-church mr-2"></i>Paroisse S.E - Admin
-    </a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="../logout.php">
-                <i class="fas fa-sign-out-alt mr-1"></i>Déconnexion
-            </a>
-        </li>
-    </ul>
-</nav>
+<!-- Header minimal - juste un espace pour le contenu principal -->
+<style>
+/* Ajustement du contenu principal pour la sidebar fixe */
+.main-content {
+    margin-left: 280px;
+    padding: 20px 30px;
+    min-height: 100vh;
+    background: #f8f9fc;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+</style>
