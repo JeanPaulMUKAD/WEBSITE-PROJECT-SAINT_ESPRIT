@@ -12,6 +12,7 @@ if(!isset($_SESSION['admin_id'])) {
     padding: 20px 30px;
     min-height: 100vh;
     background: #f8f9fc;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="sidebar">
+<nav id="sidebarMenu" class="sidebar" >
     <div class="sidebar-header">
         <div class="logo-container">
             <i class="fas fa-church"></i>
