@@ -1,636 +1,359 @@
-   <!-- Page Content -->
-    <div class="page-heading actuality-heading header-text">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-content">
-              <h4 class=" wow fadeInDown" data-wow-delay="0.8s" data-wow-duration="1.2s">restons branché</h4>
-              <h2 class=" wow fadeInDown" data-wow-delay="0.6s" data-wow-duration="1.2s">pour en savoir plus</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-   <!-- Page Content End -->
-   <!-- First container -->
-   <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-          <div class="section-heading">
-              <h3 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s">Actualités</h3>
-          </div>
-        </div>
-      </div>
-    </div>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-     <!--NEUVAINE -->
+// === CONNEXION DIRECTE À LA BASE DE DONNÉES ===
+$host = '127.0.0.1:3306';
+$user = 'u913148723_JeanPaul';
+$password = 'KdANeUq7;';
+$database = 'u913148723_authentic';
+
+$conn = mysqli_connect($host, $user, $password, $database);
+
+// Vérifier la connexion
+if (!$conn) {
+    die("❌ Erreur de connexion à la base de données : " . mysqli_connect_error());
+}
+
+mysqli_set_charset($conn, "utf8mb4");
+
+// Récupérer TOUTES les actualités (y compris les homélies et autres catégories)
+$query = "SELECT * FROM actualites WHERE publie = 1 ORDER BY 
+          CASE 
+            WHEN categorie = 'homelie' THEN 1
+            WHEN categorie = 'evenement' THEN 2
+            WHEN categorie = 'fete' THEN 3
+            WHEN categorie = 'anniversaire' THEN 4
+            ELSE 5
+          END, date_evenement DESC, created_at DESC";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("❌ Erreur SQL : " . mysqli_error($conn));
+}
+
+$actualites = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $actualites[] = $row;
+}
+
+// Regrouper les actualités par catégorie
+$categories = [];
+foreach ($actualites as $actu) {
+    $cat = $actu['categorie'] ?? 'general';
+    if (!isset($categories[$cat])) {
+        $categories[$cat] = [];
+    }
+    $categories[$cat][] = $actu;
+}
+?>
+
+<!-- Page Content - Background conservé -->
+<div class="page-heading actuality-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-content">
+                    <h4 class="wow fadeInDown" data-wow-delay="0.8s" data-wow-duration="1.2s">restons branché</h4>
+                    <h2 class="wow fadeInDown" data-wow-delay="0.6s" data-wow-duration="1.2s">pour en savoir plus</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Affichage dynamique de TOUTES les actualités par catégorie -->
+<?php if (!empty($actualites)): ?>
+    
+    <!-- NEUVAINE / HOMELIES -->
+    <?php if (!empty($categories['homelie'])): ?>
+        <?php foreach ($categories['homelie'] as $index => $actu): 
+            $image_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-2';
+            $text_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-1';
+            // Ajouter un slash au début pour que le chemin soit absolu depuis la racine
+            $image_path = !empty($actu['image']) ? '/' . ltrim($actu['image'], '/') : 'assets/images/services/default.jpg';
+            // ID unique pour le collapse
+            $collapse_id = 'collapse_' . $actu['id'];
+            
+            // Déterminer le texte à afficher
+            $display_text = !empty($actu['description']) ? $actu['description'] : (strlen($actu['contenu']) > 200 ? substr($actu['contenu'], 0, 200) . '...' : $actu['contenu']);
+        ?>
+        <div class="best-features about-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h3 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s"><?php echo htmlspecialchars($actu['titre']); ?></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12"></div>
+                    <div class="<?php echo $image_position; ?>">
+                        <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($actu['titre']); ?>">
+                        </div>
+                    </div>
+                    <div class="<?php echo $text_position; ?>">
+                        <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <h4><?php echo htmlspecialchars($actu['titre']); ?></h4>
+                            <?php if (!empty($actu['date_evenement'])): ?>
+                                <p class="text-muted"><i class="far fa-calendar-alt mr-2"></i><?php echo date('d F Y', strtotime($actu['date_evenement'])); ?></p>
+                            <?php endif; ?>
+                            
+                            <!-- Texte affiché (description ou extrait) -->
+                            <p><?php echo nl2br(htmlspecialchars($display_text)); ?></p>
+                            
+                            <!-- Bouton Lire la suite - visible s'il y a un contenu complet -->
+                            <?php if (!empty($actu['contenu']) && (empty($actu['description']) || strlen($actu['contenu']) > 200)): ?>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<?php echo $collapse_id; ?>" aria-expanded="false" aria-controls="<?php echo $collapse_id; ?>" style="background: #8B0000; border: none; margin-top: 15px;">
+                                    <i class="fas fa-chevron-down mr-2"></i> Lire la suite
+                                </button>
+                                
+                                <!-- Contenu complet caché -->
+                                <div class="collapse" id="<?php echo $collapse_id; ?>" style="margin-top: 20px;">
+                                    <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #8B0000;">
+                                        <?php echo nl2br(htmlspecialchars($actu['contenu'])); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    
+    <!-- RENCONTRES / EVENEMENTS -->
+    <?php if (!empty($categories['evenement'])): ?>
+        <?php foreach ($categories['evenement'] as $index => $actu): 
+            $image_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-2';
+            $text_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-1';
+            $image_path = !empty($actu['image']) ? '/' . ltrim($actu['image'], '/') : 'assets/images/services/default.jpg';
+            $collapse_id = 'collapse_' . $actu['id'];
+            $display_text = !empty($actu['description']) ? $actu['description'] : (strlen($actu['contenu']) > 200 ? substr($actu['contenu'], 0, 200) . '...' : $actu['contenu']);
+        ?>
+        <div class="best-features about-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h3 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s"><?php echo htmlspecialchars($actu['titre']); ?></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12"></div>
+                    <div class="<?php echo $image_position; ?>">
+                        <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($actu['titre']); ?>">
+                        </div>
+                    </div>
+                    <div class="<?php echo $text_position; ?>">
+                        <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <h4><?php echo htmlspecialchars($actu['titre']); ?></h4>
+                            <?php if (!empty($actu['date_evenement'])): ?>
+                                <p class="text-muted"><i class="far fa-calendar-alt mr-2"></i><?php echo date('d F Y', strtotime($actu['date_evenement'])); ?></p>
+                            <?php endif; ?>
+                            
+                            <p><?php echo nl2br(htmlspecialchars($display_text)); ?></p>
+                            
+                            <?php if (!empty($actu['contenu']) && (empty($actu['description']) || strlen($actu['contenu']) > 200)): ?>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<?php echo $collapse_id; ?>" aria-expanded="false" style="background: #8B0000; border: none; margin-top: 15px;">
+                                    <i class="fas fa-chevron-down mr-2"></i> Lire la suite
+                                </button>
+                                
+                                <div class="collapse" id="<?php echo $collapse_id; ?>" style="margin-top: 20px;">
+                                    <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #8B0000;">
+                                        <?php echo nl2br(htmlspecialchars($actu['contenu'])); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    
+    <!-- FETES (Pâques, etc.) -->
+    <?php if (!empty($categories['fete'])): ?>
+        <?php foreach ($categories['fete'] as $index => $actu): 
+            $image_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-2';
+            $text_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-1';
+            $image_path = !empty($actu['image']) ? '/' . ltrim($actu['image'], '/') : 'assets/images/services/default.jpg';
+            $collapse_id = 'collapse_' . $actu['id'];
+            $display_text = !empty($actu['description']) ? $actu['description'] : (strlen($actu['contenu']) > 200 ? substr($actu['contenu'], 0, 200) . '...' : $actu['contenu']);
+        ?>
+        <div class="best-features about-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h3 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s"><?php echo htmlspecialchars($actu['titre']); ?></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12"></div>
+                    <div class="<?php echo $image_position; ?>">
+                        <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($actu['titre']); ?>">
+                        </div>
+                    </div>
+                    <div class="<?php echo $text_position; ?>">
+                        <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <h4><?php echo htmlspecialchars($actu['titre']); ?></h4>
+                            <?php if (!empty($actu['date_evenement'])): ?>
+                                <p class="text-muted"><i class="far fa-calendar-alt mr-2"></i><?php echo date('d F Y', strtotime($actu['date_evenement'])); ?></p>
+                            <?php endif; ?>
+                            
+                            <p><?php echo nl2br(htmlspecialchars($display_text)); ?></p>
+                            
+                            <?php if (!empty($actu['contenu']) && (empty($actu['description']) || strlen($actu['contenu']) > 200)): ?>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<?php echo $collapse_id; ?>" aria-expanded="false" style="background: #8B0000; border: none; margin-top: 15px;">
+                                    <i class="fas fa-chevron-down mr-2"></i> Lire la suite
+                                </button>
+                                
+                                <div class="collapse" id="<?php echo $collapse_id; ?>" style="margin-top: 20px;">
+                                    <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #8B0000;">
+                                        <?php echo nl2br(htmlspecialchars($actu['contenu'])); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    
+    <!-- ANNIVERSAIRES -->
+    <?php if (!empty($categories['anniversaire'])): ?>
+        <?php foreach ($categories['anniversaire'] as $index => $actu): 
+            $image_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-2';
+            $text_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-1';
+            $image_path = !empty($actu['image']) ? '/' . ltrim($actu['image'], '/') : 'assets/images/services/default.jpg';
+            $collapse_id = 'collapse_' . $actu['id'];
+            $display_text = !empty($actu['description']) ? $actu['description'] : (strlen($actu['contenu']) > 200 ? substr($actu['contenu'], 0, 200) . '...' : $actu['contenu']);
+        ?>
+        <div class="best-features about-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h3 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s"><?php echo htmlspecialchars($actu['titre']); ?></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12"></div>
+                    <div class="<?php echo $image_position; ?>">
+                        <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($actu['titre']); ?>">
+                        </div>
+                    </div>
+                    <div class="<?php echo $text_position; ?>">
+                        <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <h4><?php echo htmlspecialchars($actu['titre']); ?></h4>
+                            <?php if (!empty($actu['date_evenement'])): ?>
+                                <p class="text-muted"><i class="far fa-calendar-alt mr-2"></i><?php echo date('d F Y', strtotime($actu['date_evenement'])); ?></p>
+                            <?php endif; ?>
+                            
+                            <p><?php echo nl2br(htmlspecialchars($display_text)); ?></p>
+                            
+                            <?php if (!empty($actu['contenu']) && (empty($actu['description']) || strlen($actu['contenu']) > 200)): ?>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<?php echo $collapse_id; ?>" aria-expanded="false" style="background: #8B0000; border: none; margin-top: 15px;">
+                                    <i class="fas fa-chevron-down mr-2"></i> Lire la suite
+                                </button>
+                                
+                                <div class="collapse" id="<?php echo $collapse_id; ?>" style="margin-top: 20px;">
+                                    <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #8B0000;">
+                                        <?php echo nl2br(htmlspecialchars($actu['contenu'])); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    
+    <!-- AUTRES CATEGORIES -->
+    <?php foreach ($categories as $cat => $items): 
+        if (in_array($cat, ['homelie', 'evenement', 'fete', 'anniversaire'])) continue;
+    ?>
+        <?php foreach ($items as $index => $actu): 
+            $image_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-2';
+            $text_position = ($index % 2 == 0) ? 'col-md-6' : 'col-md-6 order-md-1';
+            $image_path = !empty($actu['image']) ? '/' . ltrim($actu['image'], '/') : 'assets/images/services/default.jpg';
+            $collapse_id = 'collapse_' . $actu['id'];
+            $display_text = !empty($actu['description']) ? $actu['description'] : (strlen($actu['contenu']) > 200 ? substr($actu['contenu'], 0, 200) . '...' : $actu['contenu']);
+        ?>
+        <div class="best-features about-features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h3 class="section-heading wow fadeInLeft" data-wow-delay="1s" data-wow-duration="1.2s"><?php echo htmlspecialchars($actu['titre']); ?></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12"></div>
+                    <div class="<?php echo $image_position; ?>">
+                        <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($actu['titre']); ?>">
+                        </div>
+                    </div>
+                    <div class="<?php echo $text_position; ?>">
+                        <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
+                            <h4><?php echo htmlspecialchars($actu['titre']); ?></h4>
+                            <?php if (!empty($actu['date_evenement'])): ?>
+                                <p class="text-muted"><i class="far fa-calendar-alt mr-2"></i><?php echo date('d F Y', strtotime($actu['date_evenement'])); ?></p>
+                            <?php endif; ?>
+                            
+                            <p><?php echo nl2br(htmlspecialchars($display_text)); ?></p>
+                            
+                            <?php if (!empty($actu['contenu']) && (empty($actu['description']) || strlen($actu['contenu']) > 200)): ?>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<?php echo $collapse_id; ?>" aria-expanded="false" style="background: #8B0000; border: none; margin-top: 15px;">
+                                    <i class="fas fa-chevron-down mr-2"></i> Lire la suite
+                                </button>
+                                
+                                <div class="collapse" id="<?php echo $collapse_id; ?>" style="margin-top: 20px;">
+                                    <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #8B0000;">
+                                        <?php echo nl2br(htmlspecialchars($actu['contenu'])); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+    
+<?php else: ?>
+    <!-- Message si aucune actualité -->
     <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12"></div>
-          <div class="col-md-6">
-            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <img src="assets/images/services/Neuvaine.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center py-5">
+                    <h4>Aucune actualité pour le moment</h4>
+                    <p>Revenez plus tard pour découvrir les nouvelles de la paroisse.</p>
+                </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h4>HOMÉLIES DE LA NEUVAINE DE LA PENTECÔTE</h4>
-              <p>Retrouvez toutes les homélies jour après jour de la neuvaine de la Pentecôte.
-              </p> 
-            </div>
-         </div>
         </div>
-      </div>
     </div>
+<?php endif; ?>
 
-    <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h2>PHOTOS</h2>
-            </div>
-          </div>
-    <!-- Respace surface -->
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du premier jour</h1> <br>
-        <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR1.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-         <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du deuxième jour</h1> <br>
-        <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR2.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin de Respace mouve -->
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-         <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du troisième jour jour</h1> <br>
-        <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR3.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du quatrième jour</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR4.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du cinquième jour</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR5.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du sixième jour</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR 6.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du septième jour</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR 7.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du hutième jour</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR 8.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Prêche du neuvième jour</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/PREDICATION JOUR 9.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <h1 class=" md:text-4xl lg:text-xl font-bold">Homélie de la messe</h1> <br>   <div class="thumb-container">
-          <img src="assets/images/services/HOMELIE DE LA MESSE DE LA PENTECOTE.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!--RENCONTRE -->
-    <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12"></div>
-          <div class="col-md-6">
-            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <img src="assets/images/services/r1.jpg">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h4>RENCONTRE DU R.P VICAIRE AVEC LA PDJ, LE MIEC ET LA COORDINATION DES ETUDIANTS</h4>
-              <p>Une rencontre ce mercredi 30 avril 2025 entre la pastorale des jeunes, le Mouvement International des Étudiants Catholiques(MIEC) 
-                et la Coordination des Étudiants autour du Révérend Père Jean-Paul KAMBA, aumônier des jeunes.
-                Dans le souci de bien guider la jeunesse de l’église, une telle rencontre a été jugée plusque nécessaire.
-                Ladite rencontre a gravité autour des quelques points importants: la collaboration directe entre les trois structures dans 
-                l’organisation de leurs activités, le soutien mutuel, l’organisation éventuelle des activités communes, 
-                réflexion sur la gestion commune des espaces de la paroisse pouvant être rentables pour le bon fonctionnement desdites structures etc.
-                Les échanges se sont avérés très indispensables dans leur profondeur car, tendant à promouvoir la jeunesse de l’église.
-
-              </p> 
-            </div>
-         </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h2>PHOTOS</h2>
-            </div>
-          </div>
-    <!-- Respace surface -->
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/r2.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/r3.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin de Respace mouve -->
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/r4.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--DIMANCHE DE PAQUES-->
-    <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12"></div>
-          <div class="col-md-6">
-            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <img src="assets/images/services/paque1.jpg">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h4>MESSE DE PAQUES ET BENEDICTION DE L'ECOLE MATERNELLE</h4>
-              <p>Le dimanche 20 avril 2025, Dimanche de Pâques, a été un jour mémorable pour tous les fidèles de la Paroisse 
-                et de l'Aumônerie Catholique Saint Esprit.
-                Dans une ambiance spirituelle profonde marquée par la Résurrection du Christ, la messe solennelle a été 
-                présidée par Son Excellence Monseigneur l'Archevêque, entouré de nombreux prêtres, autorités et fidèles venus nombreux 
-                pour célébrer cet événement central de la foi chrétienne.
-                À la fin de la célébration eucharistique, tous se dirigent en procession vers le site du nouveau bâtiment de
-                 l'école maternelle de la paroisse. C'est dans un esprit de fête et de reconnaissance que l'Archevêque a procédé
-                  à la bénédiction officielle de cette nouvelle infrastructure éducative, fruit des efforts conjoints de la communauté 
-                  paroissiale et de ses partenaires.
-                Des discours ont été prononcés pour saluer cet accomplissement important pour l'avenir des enfants et l'éducation dans
-                 la foi. La communauté s'est ensuite réunie autour d'un moment de convivialité, partageant chants, danses, douleur et joie pascale.
-
-              </p> 
-            </div>
-         </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h2>PHOTOS</h2>
-            </div>
-          </div>
-<!-- Respace surface -->
-<!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/p3.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/p4.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin de Respace mouve -->
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/p5.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/p6.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/p1.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/p2.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-     <!--ANNIVERSAIRE SACERDOTALE-->
-    <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12"></div>
-          <div class="col-md-6">
-            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <img src="assets/images/services/Ann.jpg">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h4>MESSE D'ACTION DE GRACE DU R.P. CURE François BUHANDO Sj</h4>
-              <p> Le dimanche 02 Février 2025 jour spécial pour tous les fidèles de la Paroisse et Aumonerie Catholique Saint Esprit où le R.P. Curé François BUHANDO,Sj
-                célèbre sa onziième année de sacerdoce, dans une joie inébranlable.
-                 Après la célébration eucharistique, les chrétiens se sont rendu en chantant à son bureau devant lequel ils partagerent le pain et le gateau. <br>
-
-                <Strong>Plusieurs discours se sont émis pour présenter les gratitudes et le bien-fondé dudit prêtre</Strong>
-
-              </p> 
-            </div>
-         </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-members">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h2>PHOTOS</h2>
-            </div>
-          </div>
-<!-- Respace surface -->
-<!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/ann1.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/ann2.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin de Respace mouve -->
-
-    <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/ann3.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/ann4.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/ann5.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Debut de Respace mouve -->
-    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-      <div class="team-member">
-        <div class="thumb-container">
-          <img src="assets/images/services/ann6.jpg" alt="">
-
-          <div class="hover-effect">
-            <div class="hover-content">
-              <ul class="social-icons">
-      <!-- vide pour l'instant -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-    <!-- First container -->
-
-       <!--HOMELIES-->
-       <div class="best-features about-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12"></div>
-          <div class="col-md-6">
-            <div class="right-image wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <img src="assets/images/services/ann1.jpg">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="1.2s">
-              <h4>HOMELIES DE MESSES FESTIVES</h4>
-              <p>Retrouvez sur ce lien, le document de toutes les homelies et tous les rapports des activités organisées</p>  <br>
-              <i class='fa fa-download'></i> <a href="assets/doc/Feuillets des homelies et activitess.pdf">TELECHARGER</a>
-            </div>
-         </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-
-  
+<!-- Ajout de Bootstrap JS pour le collapse -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Animation de la flèche lors du clic
+    $('.btn-primary').on('click', function() {
+        var icon = $(this).find('i');
+        if ($(this).attr('aria-expanded') === 'true') {
+            icon.css('transform', 'rotate(0deg)');
+        } else {
+            icon.css('transform', 'rotate(180deg)');
+        }
+    });
+</script>

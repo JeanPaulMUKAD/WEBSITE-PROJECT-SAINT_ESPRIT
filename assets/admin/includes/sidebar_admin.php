@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="sidebar" >
+<nav id="sidebarMenu" class="sidebar">
     <div class="sidebar-header">
         <div class="logo-container">
             <i class="fas fa-church"></i>
@@ -40,6 +40,18 @@
                     <span>Gestion des CEV</span>
                 </a>
             </li>
+            
+            <!-- ✅ NOUVEAU : Onglet Actualités AJOUTÉ ICI -->
+            <li class="nav-item">
+                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'gestion_actualites.php' ? 'active' : ''; ?>" href="gestion_actualites.php">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Actualités</span>
+                    <?php if(basename($_SERVER['PHP_SELF']) == 'gestion_actualites.php'): ?>
+                        <span class="badge">Nouveau</span>
+                    <?php endif; ?>
+                </a>
+            </li>
+            
             <li class="nav-item">
                 <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'parametres.php' ? 'active' : ''; ?>" href="parametres.php">
                     <i class="fas fa-cog"></i>
@@ -228,5 +240,14 @@
 
 .sidebar::-webkit-scrollbar-thumb:hover {
     background: rgba(255,255,255,0.5);
+}
+
+.badge {
+    background: #FFD700;
+    color: #8B0000;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: auto;
 }
 </style>
